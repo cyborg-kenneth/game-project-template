@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://duorweghpsb4p"]
+[gd_scene load_steps=3 format=3 uid="uid://duorweghpsb4p"]
 
 [ext_resource type="Script" path="res://Menus/start_menu.gd" id="1_gqbr7"]
+[ext_resource type="StyleBox" uid="uid://deu7u7g74jr6y" path="res://Resources/options_resource.tres" id="2_via5f"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -73,6 +74,109 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Exit Game"
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 60.0
+offset_right = -240.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_via5f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/HBoxContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GraphicsLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Graphics"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="FullscreenLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Fullscreen: Off"
+
+[node name="FullscreenButton" type="CheckButton" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SoundMusicLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound and Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Sound Volume: "
+
+[node name="SoundSlider" type="HSlider" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 26)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Music Volume: "
+
+[node name="MusicSlider" type="HSlider" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 26)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveSettingsButton" type="Button" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(60, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save"
+
+[node name="CancelSettingsButton" type="Button" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(60, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Cancel"
 
 [node name="Credits" type="Panel" parent="."]
 visible = false
@@ -176,4 +280,9 @@ text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Options/HBoxContainer/VBoxContainer/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="drag_ended" from="Options/HBoxContainer/VBoxContainer/HBoxContainer2/SoundSlider" to="." method="_on_sound_slider_drag_ended"]
+[connection signal="drag_ended" from="Options/HBoxContainer/VBoxContainer/HBoxContainer3/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="pressed" from="Options/HBoxContainer/VBoxContainer/HBoxContainer4/SaveSettingsButton" to="." method="_on_save_settings_button_pressed"]
+[connection signal="pressed" from="Options/HBoxContainer/VBoxContainer/HBoxContainer4/CancelSettingsButton" to="." method="_on_cancel_settings_button_pressed"]
 [connection signal="pressed" from="Credits/CenterContainer/VBoxContainer/HideCreditsButton" to="." method="_on_hide_credits_button_pressed"]
