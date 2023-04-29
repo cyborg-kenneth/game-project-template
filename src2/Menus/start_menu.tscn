@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck2b7g2mv8fh5"]
+
+[ext_resource type="Script" path="res://Menus/start_menu.gd" id="1_ctv3a"]
+[ext_resource type="PackedScene" uid="uid://brwid52dv5q0n" path="res://UI/options.tscn" id="2_dplj1"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctv3a")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="CenterContainer/MainContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Game Title"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Start"
+
+[node name="LoadButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Load"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+
+[node name="Options" parent="CenterContainer" instance=ExtResource("2_dplj1")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="CenterContainer/MainContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://brwid52dv5q0n"]
+
+[ext_resource type="Script" path="res://UI/options.gd" id="1_bgq8i"]
+
+[node name="Options" type="Panel"]
+custom_minimum_size = Vector2(800, 600)
+script = ExtResource("1_bgq8i")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Graphics & Audio" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GraphicsLabel" type="Label" parent="TabContainer/Graphics & Audio"]
+layout_mode = 2
+text = "Graphics"
+horizontal_alignment = 1
+
+[node name="FullscreenButton" type="CheckButton" parent="TabContainer/Graphics & Audio"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MusicContainer/MusicSlider")
+focus_neighbor_bottom = NodePath("../SoundContainer/SoundSlider")
+focus_next = NodePath("../SoundContainer/SoundSlider")
+focus_previous = NodePath("../MusicContainer/MusicSlider")
+text = "Fullscreen: Off"
+
+[node name="AudioLabel" type="Label" parent="TabContainer/Graphics & Audio"]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundContainer" type="HBoxContainer" parent="TabContainer/Graphics & Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="SoundLabel" type="Label" parent="TabContainer/Graphics & Audio/SoundContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Sound Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="TabContainer/Graphics & Audio/SoundContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../FullscreenButton")
+focus_neighbor_bottom = NodePath("../../MusicContainer/MusicSlider")
+focus_next = NodePath("../../MusicContainer/MusicSlider")
+focus_previous = NodePath("../../FullscreenButton")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusicContainer" type="HBoxContainer" parent="TabContainer/Graphics & Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="MusicLabel" type="Label" parent="TabContainer/Graphics & Audio/MusicContainer"]
+layout_mode = 2
+text = "Music Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Graphics & Audio/MusicContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../SoundContainer/SoundSlider")
+focus_neighbor_bottom = NodePath("../../ChangesContainer/SaveButton")
+focus_next = NodePath("../../ChangesContainer/SaveButton")
+focus_previous = NodePath("../../SoundContainer/SoundSlider")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="ChangesContainer" type="HBoxContainer" parent="TabContainer/Graphics & Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="TabContainer/Graphics & Audio/ChangesContainer"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+text = "Save Changes"
+
+[node name="CancelButton" type="Button" parent="TabContainer/Graphics & Audio/ChangesContainer"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+text = "Cancel"
+
+[node name="Game Controls" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="toggled" from="TabContainer/Graphics & Audio/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
