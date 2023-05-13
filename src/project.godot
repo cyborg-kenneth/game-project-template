@@ -10,14 +10,10 @@ config_version=5
 
 [application]
 
-config/name="ProjectTemplate2D"
+config/name="Project 2D Template"
 run/main_scene="res://Menus/start_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-GlobalResourceLoader="*res://Utils/ResourceLoader.gd"
 
 [display]
 

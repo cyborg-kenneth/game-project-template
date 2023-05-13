@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://duorweghpsb4p"]
+[gd_scene load_steps=3 format=3 uid="uid://ck2b7g2mv8fh5"]
 
-[ext_resource type="Script" path="res://Menus/start_menu.gd" id="1_gqbr7"]
-[ext_resource type="StyleBox" uid="uid://deu7u7g74jr6y" path="res://Resources/options_resource.tres" id="2_via5f"]
+[ext_resource type="Script" path="res://Menus/start_menu.gd" id="1_ctv3a"]
+[ext_resource type="PackedScene" uid="uid://brwid52dv5q0n" path="res://UI/options.tscn" id="2_dplj1"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gqbr7")
+script = ExtResource("1_ctv3a")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -20,265 +20,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MainContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="GameTitle" type="Label" parent="CenterContainer/MainContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 72
 text = "Game Title"
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="StartButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 text = "Start"
 
-[node name="LoadButton" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="LoadButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 text = "Load"
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="OptionsButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="CreditsButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="QuitButton" type="Button" parent="CenterContainer/MainContainer"]
+custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
-text = "Exit Game"
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
 
-[node name="Options" type="Panel" parent="."]
+[node name="Options" parent="CenterContainer" instance=ExtResource("2_dplj1")]
 visible = false
-custom_minimum_size = Vector2(800, 600)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 240.0
-offset_top = 60.0
-offset_right = -240.0
-offset_bottom = -60.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("2_via5f")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Options"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/HBoxContainer"]
-custom_minimum_size = Vector2(400, 500)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="GraphicsLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Graphics"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="FullscreenLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Fullscreen: Off"
-
-[node name="FullscreenButton" type="CheckButton" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="SoundMusicLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Sound and Music"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SoundLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Sound Volume: "
-
-[node name="SoundSlider" type="HSlider" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 26)
-layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="MusicLabel" type="Label" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Music Volume: "
-
-[node name="MusicSlider" type="HSlider" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(200, 26)
-layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="Options/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="SaveSettingsButton" type="Button" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(60, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Save"
-
-[node name="CancelSettingsButton" type="Button" parent="Options/HBoxContainer/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(60, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Cancel"
-
-[node name="Credits" type="Panel" parent="."]
-visible = false
-custom_minimum_size = Vector2(800, 600)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 240.0
-offset_top = 60.0
-offset_right = -240.0
-offset_bottom = -60.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="Credits"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 790.0
-offset_bottom = 590.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 44
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Credits/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(720, 440)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="GameCredits" type="Label" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="GodotLicense" type="Label" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-text = "--------------------------------------------------------------------------------------
-    This game uses Godot Engine, available under the following license:
-
-    Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="FreeTypeLicense" type="Label" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-text = "--------------------------------------------------------------------------------------
-Portions of this software are copyright © 1996-2022 The FreeType Project (www.freetype.org). All rights reserved."
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="ENetLicense" type="Label" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-text = "--------------------------------------------------------------------------------------
-    Copyright (c) 2002-2020 Lee Salzman
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="mbedTLSLicense" type="Label" parent="Credits/CenterContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-text = "--------------------------------------------------------------------------------------
-    Copyright The Mbed TLS Contributors
-
-    Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="HideCreditsButton" type="Button" parent="Credits/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Back"
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="toggled" from="Options/HBoxContainer/VBoxContainer/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
-[connection signal="drag_ended" from="Options/HBoxContainer/VBoxContainer/HBoxContainer2/SoundSlider" to="." method="_on_sound_slider_drag_ended"]
-[connection signal="drag_ended" from="Options/HBoxContainer/VBoxContainer/HBoxContainer3/MusicSlider" to="." method="_on_music_slider_drag_ended"]
-[connection signal="pressed" from="Options/HBoxContainer/VBoxContainer/HBoxContainer4/SaveSettingsButton" to="." method="_on_save_settings_button_pressed"]
-[connection signal="pressed" from="Options/HBoxContainer/VBoxContainer/HBoxContainer4/CancelSettingsButton" to="." method="_on_cancel_settings_button_pressed"]
-[connection signal="pressed" from="Credits/CenterContainer/VBoxContainer/HideCreditsButton" to="." method="_on_hide_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainContainer/QuitButton" to="." method="_on_quit_button_pressed"]
